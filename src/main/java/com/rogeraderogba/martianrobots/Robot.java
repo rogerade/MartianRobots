@@ -19,4 +19,25 @@ public class Robot {
 	public void processCommands(List<Command> commands) {
 		
 	}
+	
+	public PointOrientation getPointOrientation() {
+		return this.pointOrientation;
+	}
+
+	public boolean isLost() {
+		return isLost;
+	}
+
+	public void setIsLost() {
+		this.isLost = true;
+	}
+
+	public void setPointOrientation(PointOrientation nextPointOrientation) {
+		this.pointOrientation = nextPointOrientation;
+	}
+	
+	@Override
+	public String toString() {
+		return this.pointOrientation.toString() + " " + ((this.isLost) ? "LOST" : "");
+	}
 }
