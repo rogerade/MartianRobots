@@ -38,6 +38,6 @@ public class Robot {
 	
 	@Override
 	public String toString() {
-		return this.pointOrientation.toString() + " " + ((this.isLost) ? "LOST" : "");
+		return this.pointOrientation.toString() + ((this.isLost) ? " LOST" : "");
 	}
 }
