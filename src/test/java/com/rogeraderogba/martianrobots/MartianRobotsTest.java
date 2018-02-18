@@ -64,11 +64,6 @@ public class MartianRobotsTest {
 	}
 	
 	@Test(expected=MartianRobotsException.class)
-	public void testInstructionStringLessThan100() {
-		
-	}
-	
-	@Test(expected=MartianRobotsException.class)
 	public void testNegativeXCordinateForRobot() {
 		controller.addRobot(Integer.MIN_VALUE, 3, Orientation.NORTH);
 	}

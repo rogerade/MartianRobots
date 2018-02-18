@@ -7,7 +7,7 @@ import com.rogeraderogba.martianrobots.location.Point;
 import com.rogeraderogba.martianrobots.location.PointOrientation;
 
 public enum Command {
-	LEFT("L"), RIGHT("R"), FORWARD("F");
+	LEFT('L'), RIGHT('R'), FORWARD('F');
 	
 	private static final Map<Orientation, Orientation> beforeToAfterLeftCommandMap;
 	private static final Map<Orientation, Orientation> beforeToAfterRightCommandMap;
@@ -24,13 +24,13 @@ public enum Command {
 		beforeToAfterRightCommandMap.put(Orientation.WEST, Orientation.NORTH);
 	}
 	
-	private String code = null;
+	private char code;
 	
-	Command(String code){
+	Command(char code){
 		this.code = code;
 	}
 	
-	public String getCode() {
+	public char getCode() {
 		return this.code;
 	}
 
@@ -68,5 +68,16 @@ public enum Command {
 				break;
 		}
 		return new PointOrientation(newPoint, newOrientation);
+	}
+	
+	public static Command getCommand(char c) {
+		Command result = null;
+		for(Command command : Command.values()) {
+			if(command.getCode() == c) {
+				result = command;
+				break;
+			}
+		}
+		return result;
 	}
 }
