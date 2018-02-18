@@ -1,5 +1,7 @@
 package com.rogeraderogba.martianrobots.enums;
 
+import com.rogeraderogba.martianrobots.MartianRobotsException;
+
 public enum Orientation {
 	NORTH("N"), SOUTH("S"), EAST("E"), WEST("W");
 	
@@ -20,6 +22,9 @@ public enum Orientation {
 				result = o;
 				break;
 			}
+		}
+		if (result == null) {
+			throw new MartianRobotsException("Orientation not currently supported "+ s);
 		}
 		return result;
 	}
