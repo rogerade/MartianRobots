@@ -1,11 +1,21 @@
 package com.rogeraderogba.martianrobots.location;
 
+import com.rogeraderogba.martianrobots.MartianRobotsException;
+
 public final class Point {
 
+	private static final int COORDINATE_MAXIMUM_VALUE = 50;
 	private final int x;
 	private final int y;
 	
 	public Point(int x, int y) {
+		if (x > COORDINATE_MAXIMUM_VALUE || y > COORDINATE_MAXIMUM_VALUE) {
+			throw new MartianRobotsException(
+					String.format("Coordinate maximum exceeded Max=%s, X=%s, Y=%s", COORDINATE_MAXIMUM_VALUE, x, y));
+		}
+		if (x < 0 || y < 0) {
+			throw new MartianRobotsException("Coordinates should not be less than 0");
+		}
 		this.x = x;
 		this.y = y;
 	}
