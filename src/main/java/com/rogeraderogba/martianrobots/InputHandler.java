@@ -45,4 +45,9 @@ public class InputHandler {
 		return this.controller;
 	}
 
+	public void printOutput() {
+		for(String finalGridPosition : this.controller.getFinalGridPositions()) {
+			System.out.println(finalGridPosition);
+		}
+	}
 }
