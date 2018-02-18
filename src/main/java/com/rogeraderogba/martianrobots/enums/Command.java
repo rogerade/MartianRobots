@@ -65,22 +65,22 @@ public enum Command {
 	
 	Command(char code){
 		this.code = code;
+		Holder.MAP.put(code, this);
 	}
 	
 	public char getCode() {
 		return this.code;
 	}
 	
+	private static class Holder {
+        static Map<Character, Command> MAP = new HashMap<>();
+    }
+	
 	public abstract PointOrientation getNextPointOrientation(PointOrientation pointOrientation); 
 	
 	public static Command getCommand(char c) {
-		Command result = null;
-		for(Command command : Command.values()) {
-			if(command.getCode() == c) {
-				result = command;
-				break;
-			}
-		}
+		Command result = Holder.MAP.get(c);
+
 		if (result == null) {
 			throw new MartianRobotsException("Command currently not supported");
 		}
