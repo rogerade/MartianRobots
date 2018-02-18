@@ -26,8 +26,8 @@ public class Controller {
 	public void commandRobot(List<Command> commands) {
 		if(commands != null && commands.size() > 0) {
 			Robot currentRobot = this.marsSurface.getCurrentRobot();
-			PointOrientation pointOrientation = currentRobot.getPointOrientation();
 			for(Command command : commands) {
+				PointOrientation pointOrientation = currentRobot.getPointOrientation();
 				if (Command.FORWARD == command && this.marsSurface.isLostScentPosition(pointOrientation)) {
 					// Ignore
 				}
@@ -41,6 +41,7 @@ public class Controller {
 					else {
 						this.marsSurface.addLostScent(currentRobot.getPointOrientation());
 						currentRobot.setIsLost();
+						break;
 					}
 				}
 			}
@@ -48,7 +49,7 @@ public class Controller {
 	}
 	
 	public boolean isWithinBounds(int value, int max) {
-		return value > 0 && value <= max;
+		return value >= 0 && value <= max;
 	}
 
 	public List<String> getFinalGridPositions() {
